@@ -2,6 +2,7 @@ package com.dbcourse.classchoose.controller;
 
 
 import com.dbcourse.classchoose.entity.LoginBody;
+import com.dbcourse.classchoose.entity.Student;
 import com.dbcourse.classchoose.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -27,6 +28,9 @@ public class StudentController {
     public int login(@RequestBody LoginBody loginBody){
         return studentService.login(loginBody);
     }
+
+    @GetMapping("/findBysno/{sno}")
+    public Student findBysno(@PathVariable("sno") String sno){ return studentService.findBysno(sno);}
 
 }
 

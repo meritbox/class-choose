@@ -33,4 +33,9 @@ public class StudentServiceImpl extends ServiceImpl<StudentMapper, Student> impl
 
         return (student.getPassword().equals(password))? 1 : 0;
     }
+
+    @Override
+    public Student findBysno(String sno) {
+        return studentMapper.selectById(sno);
+    }
 }
