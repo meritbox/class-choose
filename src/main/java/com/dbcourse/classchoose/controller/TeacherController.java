@@ -1,14 +1,13 @@
 package com.dbcourse.classchoose.controller;
 
 
+import com.dbcourse.classchoose.entity.LoginBody;
 import com.dbcourse.classchoose.entity.Teacher;
 import com.dbcourse.classchoose.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -26,6 +25,10 @@ public class TeacherController {
     @Autowired
     TeacherService teacherService;
 
+    @PostMapping("/login")
+    public int login(@RequestBody LoginBody loginBody){ return teacherService.login(loginBody);}
 
+    @GetMapping("/findBytno/{tno}")
+    public Teacher findBytno(@PathVariable("tno") String tno){ return teacherService.findBytno(tno);}
 }
 
