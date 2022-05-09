@@ -15,7 +15,7 @@ import lombok.EqualsAndHashCode;
  * @author shawn
  * @since 2022-05-08
  */
-@Data
+  @Data
   @EqualsAndHashCode(callSuper = false)
     public class Clazz implements Serializable {
 

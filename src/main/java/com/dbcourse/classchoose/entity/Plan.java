@@ -15,7 +15,7 @@ import lombok.EqualsAndHashCode;
  * @author shawn
  * @since 2022-05-08
  */
-@Data
+  @Data
   @EqualsAndHashCode(callSuper = false)
     public class Plan implements Serializable {
 
@@ -30,6 +30,8 @@ import lombok.EqualsAndHashCode;
     private String tno;
 
     private String time;
+
+    private String term;
 
     private String location;
 

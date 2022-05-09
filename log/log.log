@@ -382,3 +382,43 @@ java.lang.NullPointerException: null
 2022-05-09 20:56:02.770  INFO 99629 --- [http-nio-9090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
 2022-05-09 20:56:02.841  INFO 99629 --- [http-nio-9090-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
 2022-05-09 20:56:03.007  INFO 99629 --- [http-nio-9090-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-05-09 21:27:24.566  INFO 99629 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-05-09 21:27:24.570  INFO 99629 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-05-09 21:27:29.552  INFO 6027 --- [restartedMain] c.d.classchoose.ClassChooseApplication   : Starting ClassChooseApplication using Java 1.8.0_292 on MacdeMacBook-Air.local with PID 6027 (/Users/meritbox/Downloads/class-choose/target/classes started by mac in /Users/meritbox/Downloads/class-choose)
+2022-05-09 21:27:29.552 DEBUG 6027 --- [restartedMain] c.d.classchoose.ClassChooseApplication   : Running with Spring Boot v2.6.7, Spring v5.3.19
+2022-05-09 21:27:29.553  INFO 6027 --- [restartedMain] c.d.classchoose.ClassChooseApplication   : No active profile set, falling back to 1 default profile: "default"
+2022-05-09 21:27:29.578  INFO 6027 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-05-09 21:27:29.578  INFO 6027 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-05-09 21:27:30.193  INFO 6027 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2022-05-09 21:27:30.198  INFO 6027 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-05-09 21:27:30.199  INFO 6027 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.62]
+2022-05-09 21:27:30.230  INFO 6027 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-05-09 21:27:30.230  INFO 6027 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 652 ms
+2022-05-09 21:27:30.677  WARN 6027 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2022-05-09 21:27:30.703  INFO 6027 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2022-05-09 21:27:30.709  INFO 6027 --- [restartedMain] c.d.classchoose.ClassChooseApplication   : Started ClassChooseApplication in 1.395 seconds (JVM running for 1.763)
+2022-05-09 21:27:55.841  INFO 6027 --- [http-nio-9090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-05-09 21:27:55.842  INFO 6027 --- [http-nio-9090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-05-09 21:27:55.845  INFO 6027 --- [http-nio-9090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2022-05-09 21:28:03.255  INFO 6027 --- [http-nio-9090-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-05-09 21:28:03.466  INFO 6027 --- [http-nio-9090-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-05-09 22:19:58.412  INFO 6027 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-05-09 22:19:58.431  INFO 6027 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-05-09 22:47:13.783  INFO 22013 --- [restartedMain] c.d.classchoose.ClassChooseApplication   : Starting ClassChooseApplication using Java 1.8.0_292 on MacdeMacBook-Air.local with PID 22013 (/Users/meritbox/Downloads/class-choose/target/classes started by mac in /Users/meritbox/Downloads/class-choose)
+2022-05-09 22:47:13.784 DEBUG 22013 --- [restartedMain] c.d.classchoose.ClassChooseApplication   : Running with Spring Boot v2.6.7, Spring v5.3.19
+2022-05-09 22:47:13.784  INFO 22013 --- [restartedMain] c.d.classchoose.ClassChooseApplication   : No active profile set, falling back to 1 default profile: "default"
+2022-05-09 22:47:13.824  INFO 22013 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-05-09 22:47:13.824  INFO 22013 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-05-09 22:47:14.398  INFO 22013 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2022-05-09 22:47:14.403  INFO 22013 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-05-09 22:47:14.403  INFO 22013 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.62]
+2022-05-09 22:47:14.434  INFO 22013 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-05-09 22:47:14.435  INFO 22013 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 611 ms
+2022-05-09 22:47:14.933  WARN 22013 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2022-05-09 22:47:14.966  INFO 22013 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2022-05-09 22:47:14.972  INFO 22013 --- [restartedMain] c.d.classchoose.ClassChooseApplication   : Started ClassChooseApplication in 1.419 seconds (JVM running for 1.776)
+2022-05-09 22:47:46.456  INFO 22013 --- [http-nio-9090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-05-09 22:47:46.457  INFO 22013 --- [http-nio-9090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-05-09 22:47:46.460  INFO 22013 --- [http-nio-9090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2022-05-09 22:47:46.539  INFO 22013 --- [http-nio-9090-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-05-09 22:47:46.759  INFO 22013 --- [http-nio-9090-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
