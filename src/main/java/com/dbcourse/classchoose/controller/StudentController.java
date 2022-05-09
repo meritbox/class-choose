@@ -1,12 +1,10 @@
 package com.dbcourse.classchoose.controller;
 
 
-import com.dbcourse.classchoose.entity.LoginBody;
+import com.dbcourse.classchoose.entity.DTO.LoginBody;
 import com.dbcourse.classchoose.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import org.springframework.stereotype.Controller;
 
 /**
  * <p>

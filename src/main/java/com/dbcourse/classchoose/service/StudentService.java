@@ -1,6 +1,6 @@
 package com.dbcourse.classchoose.service;
 
-import com.dbcourse.classchoose.entity.LoginBody;
+import com.dbcourse.classchoose.entity.DTO.LoginBody;
 import com.dbcourse.classchoose.entity.Student;
 import com.baomidou.mybatisplus.extension.service.IService;
 

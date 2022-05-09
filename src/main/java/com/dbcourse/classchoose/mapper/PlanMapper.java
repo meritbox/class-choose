@@ -2,6 +2,7 @@ package com.dbcourse.classchoose.mapper;
 
 import com.dbcourse.classchoose.entity.Plan;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.springframework.stereotype.Repository;
 
 /**
  * <p>
@@ -11,6 +12,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author shawn
  * @since 2022-05-08
  */
+@Repository
 public interface PlanMapper extends BaseMapper<Plan> {
 
 }

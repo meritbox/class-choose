@@ -1,4 +1,4 @@
-package com.dbcourse.classchoose.entity;
+package com.dbcourse.classchoose.entity.DTO;
 
 import lombok.Data;
 

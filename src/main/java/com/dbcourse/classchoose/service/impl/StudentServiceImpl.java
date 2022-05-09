@@ -1,6 +1,6 @@
 package com.dbcourse.classchoose.service.impl;
 
-import com.dbcourse.classchoose.entity.LoginBody;
+import com.dbcourse.classchoose.entity.DTO.LoginBody;
 import com.dbcourse.classchoose.entity.Student;
 import com.dbcourse.classchoose.mapper.StudentMapper;
 import com.dbcourse.classchoose.service.StudentService;
@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class StudentServiceImpl extends ServiceImpl<StudentMapper, Student> implements StudentService {
 
+
     @Autowired
     StudentMapper studentMapper;
 
@@ -26,11 +27,7 @@ public class StudentServiceImpl extends ServiceImpl<StudentMapper, Student> impl
     public int login(LoginBody loginBody) {
         String username = loginBody.getUsername();
         String password = loginBody.getPassword();
-        if("SYSTEM".equals(username) && "SYSTEM".equals(password)){
-            return 2;
-        }
         Student student = studentMapper.selectById(username);
-
         return (student.getPassword().equals(password))? 1 : 0;
     }
 }
