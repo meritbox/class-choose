@@ -1,7 +1,9 @@
 package com.dbcourse.classchoose.controller;
 
 
+import com.dbcourse.classchoose.entity.DTO.GradeDTO;
 import com.dbcourse.classchoose.entity.Grade;
+import com.dbcourse.classchoose.mapper.GradeMapper;
 import com.dbcourse.classchoose.service.GradeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,9 +28,12 @@ public class GradeController {
     @Autowired
     GradeService gradeService;
 
+    @Autowired
+    GradeMapper gradeMapper;
+
     @GetMapping("/getAll")
-    public List<Grade> getAll(){
-        return gradeService.list();
+    public List<GradeDTO> getAll(){
+        return gradeMapper.getAll();
     }
 }
 

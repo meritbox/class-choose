@@ -2,7 +2,9 @@ package com.dbcourse.classchoose.controller;
 
 
 import com.dbcourse.classchoose.entity.DTO.LoginBody;
+import com.dbcourse.classchoose.entity.DTO.TeacherDTO;
 import com.dbcourse.classchoose.entity.Teacher;
+import com.dbcourse.classchoose.mapper.TeacherMapper;
 import com.dbcourse.classchoose.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,14 +26,17 @@ public class TeacherController {
     @Autowired
     TeacherService teacherService;
 
+    @Autowired
+    TeacherMapper teacherMapper;
+
     @PostMapping("/login")
     public int login(@RequestBody LoginBody loginBody){
         return teacherService.login(loginBody);
     }
 
     @GetMapping("/getAll")
-    public List<Teacher> getAll(){
-        return teacherService.list();
+    public List<TeacherDTO> getAll(){
+        return teacherMapper.getAll();
     }
 
 }
