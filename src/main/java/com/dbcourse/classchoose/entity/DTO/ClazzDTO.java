@@ -11,5 +11,7 @@ public class ClazzDTO {
 
     private Integer credit;
 
+    private String dno;
+
     private String department;
 }

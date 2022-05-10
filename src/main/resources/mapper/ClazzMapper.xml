@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dbcourse.classchoose.mapper.ClazzMapper">
-
+    <select id="getAll" resultType="com.dbcourse.classchoose.entity.DTO.ClazzDTO">
+        select clazz.cno cno, clazz.cname cname, clazz.credit credit, clazz.dno dno, department.dname department
+        from clazz left join department on clazz.dno = department.dno
+    </select>
+    <insert id="insertClazz" parameterType="com.dbcourse.classchoose.entity.Clazz">
+        insert into clazz
+        (cno,cname,credit,dno)
+        values
+        (#{cno},#{cname},#{credit},#{dno})
+    </insert>
 </mapper>
