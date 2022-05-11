@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dbcourse.classchoose.mapper.PlanMapper">
-
+<select id="getAll" resultType="com.dbcourse.classchoose.entity.DTO.PlanDTO">
+    select plan.pno pno,plan.cno cno,plan.cname cname,plan.tno tno,teacher.tname tname,plan.time time,plan.term term,plan.location location,plan.credit credit,plan.dno dno,department.dname department,plan.capacity capacity,plan.cur_num curNum
+        from plan ,teacher,department where plan.tno=teacher.tno and plan.dno=department.dno
+</select>
+    <insert id="insertPlan" parameterType="com.dbcourse.classchoose.entity.Plan">
+        insert into plan
+        (pno,cno,cname,tno,time,term,location,credit,dno,capacity,cur_num)
+        values
+        (#{pno},#{cno},#{cname},#{tno},#{time},#{term},#{location},#{credit},#{dno},#{capacity},#{curNum})
+    </insert>
 </mapper>

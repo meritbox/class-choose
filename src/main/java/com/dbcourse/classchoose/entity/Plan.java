@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.dbcourse.classchoose.entity.DTO.PlanBody;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -42,6 +43,16 @@ import lombok.EqualsAndHashCode;
     private Integer capacity;
 
     private Integer curNum;
+
+    public void set(PlanBody planBody){
+      pno = planBody.getPno();
+      cno = planBody.getCno();
+      tno = planBody.getTno();
+      time = planBody.getTime();
+      term = planBody.getTerm();
+      location = planBody.getLocation();
+      capacity = planBody.getCapacity();
+    }
 
 
 }

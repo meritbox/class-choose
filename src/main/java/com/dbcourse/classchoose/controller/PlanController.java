@@ -1,14 +1,15 @@
 package com.dbcourse.classchoose.controller;
 
 
+import com.dbcourse.classchoose.entity.DTO.PlanBody;
+import com.dbcourse.classchoose.entity.DTO.PlanDTO;
 import com.dbcourse.classchoose.entity.Plan;
+import com.dbcourse.classchoose.mapper.PlanMapper;
 import com.dbcourse.classchoose.service.PlanService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -26,11 +27,17 @@ public class PlanController {
     @Autowired
     PlanService planService;
 
+    @Autowired
+    PlanMapper planMapper;
+
     @GetMapping("/getAll")
-    public List<Plan> getAll(){
-        return planService.list();
+    public List<PlanDTO> getAll(){
+        return planMapper.getAll();
     }
 
-
+    @PostMapping("/addPlan")
+    public boolean addPlan(@RequestBody PlanBody planBody){
+        return planService.addPlan(planBody)>0? true:false;
+    }
 }
 
