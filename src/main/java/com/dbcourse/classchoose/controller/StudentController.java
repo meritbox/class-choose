@@ -38,5 +38,14 @@ public class StudentController {
     public List<StudentDTO> getAll(){
         return studentMapper.getAll();
     }
+
+    @PostMapping("/add")
+    public boolean add(@RequestBody Student student){return studentMapper.add(student)>0;}
+
+    @PostMapping("/updateStudent")
+    public boolean updateStudent(@RequestBody Student student){return studentMapper.updateById(student)>0;}
+
+    @GetMapping("/delete/{sno}")
+    public boolean delete(@PathVariable("sno") String sno){return studentMapper.deleteById(sno)>0;}
 }
 

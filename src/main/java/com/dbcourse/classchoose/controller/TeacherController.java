@@ -39,5 +39,14 @@ public class TeacherController {
         return teacherMapper.getAll();
     }
 
+    @PostMapping("/add")
+    public boolean add(@RequestBody Teacher teacher){ return teacherMapper.add(teacher)>0;}
+
+    @PostMapping("/updateTeacher")
+    public boolean updateTeacher(@RequestBody Teacher teacher){return teacherMapper.updateById(teacher)>0;}
+
+    @GetMapping("/delete/{tno}")
+    public boolean delete(@PathVariable("tno") String tno){return teacherMapper.deleteById(tno)>0;}
+
 }
 

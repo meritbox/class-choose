@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dbcourse.classchoose.mapper.StudentMapper">
-<select id="getAll" resultType="com.dbcourse.classchoose.entity.DTO.StudentDTO">
-    select student.sno sno,student.sname sname,student.sex sex,student.dno dno,department.dname department,student.gpa
-        from student left join department on student.dno=department.dno
-</select>
+    <select id="getAll" resultType="com.dbcourse.classchoose.entity.DTO.StudentDTO">
+        select student.sno sno,student.sname sname,student.sex sex,student.dno dno,department.dname department,student.gpa
+            from student left join department on student.dno=department.dno
+    </select>
+    <insert id="add" parameterType="com.dbcourse.classchoose.entity.Student">
+        insert into student
+            (sno,sname,sex,dno,gpa,password)
+        values (#{sno},#{sname},#{sex},#{dno},#{gpa},#{password})
+    </insert>
 </mapper>

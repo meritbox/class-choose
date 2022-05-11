@@ -18,4 +18,5 @@ import java.util.List;
 @Repository
 public interface StudentMapper extends BaseMapper<Student> {
     List<StudentDTO>getAll();
+    int add(Student student);
 }
