@@ -39,5 +39,10 @@ public class PlanController {
     public boolean addPlan(@RequestBody PlanBody planBody){
         return planService.addPlan(planBody)>0? true:false;
     }
+
+    @GetMapping("/deletePlan/{pno}")
+    public boolean deletePlan(@PathVariable("pno") String pno){
+        return planMapper.deleteById(pno)>0? true:false;
+    }
 }
 
