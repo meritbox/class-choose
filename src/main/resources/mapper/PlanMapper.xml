@@ -6,6 +6,13 @@
             from (plan left join teacher on plan.tno = teacher.tno )
             left join department on plan.dno=department.dno
     </select>
+
+    <select id="selectByCnoTnoTerm" resultType="com.dbcourse.classchoose.entity.Plan">
+        select pno,cno,cname,tno,time,term,location,credit,dno,capacity,cur_num curNum
+        from plan
+        where cno=#{cno} and tno=#{tno} and term=#{term}
+    </select>
+
     <insert id="insertPlan" parameterType="com.dbcourse.classchoose.entity.Plan">
         insert into plan
         (pno,cno,cname,tno,time,term,location,credit,dno,capacity,cur_num)

@@ -16,4 +16,23 @@
             left join clazz on selected_course.cno = clazz.cno
 
     </select>
+
+    <select id="selectBySno" parameterType="java.lang.String" resultType="com.dbcourse.classchoose.entity.DTO.GradeDTO">
+        select
+            selected_course.id id,
+            selected_course.sno sno,
+            student.sname sname,
+            selected_course.cno cno,
+            clazz.cname cname,
+            selected_course.term term,
+            selected_course.tno tno,
+            teacher.tname tname,
+            selected_course.usual_grade usualGrade,
+            selected_course.final_grade firstGrade,
+            selected_course.total_grade totalGrade
+        from selected_course left join student on selected_course.sno = student.sno
+        left join clazz on selected_course.cno = clazz.cno
+        left join teacher on selected_course.tno = teacher.tno
+        where selected_course.sno=#{sno}
+    </select>
 </mapper>

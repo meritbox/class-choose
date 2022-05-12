@@ -1,5 +1,6 @@
 package com.dbcourse.classchoose.mapper;
 
+import com.dbcourse.classchoose.entity.DTO.GradeDTO;
 import com.dbcourse.classchoose.entity.DTO.TeacherCourseDTO;
 import com.dbcourse.classchoose.entity.SelectedCourse;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
@@ -19,4 +20,5 @@ import java.util.List;
 public interface SelectedCourseMapper extends BaseMapper<SelectedCourse> {
 
     List<TeacherCourseDTO> findTeacherCourseRecord();
+    List<GradeDTO> selectBySno(String Sno);
 }

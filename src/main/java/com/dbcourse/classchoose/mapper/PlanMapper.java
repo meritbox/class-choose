@@ -19,4 +19,5 @@ import java.util.List;
 public interface PlanMapper extends BaseMapper<Plan> {
     List<PlanDTO> getAll();
     int insertPlan(Plan plan);
+    Plan selectByCnoTnoTerm(String cno,String tno,String term);
 }

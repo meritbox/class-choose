@@ -1,10 +1,14 @@
 package com.dbcourse.classchoose.controller;
 
 
+import com.dbcourse.classchoose.entity.DTO.GradeDTO;
 import com.dbcourse.classchoose.entity.DTO.TeacherCourseDTO;
+import com.dbcourse.classchoose.entity.SelectedCourse;
 import com.dbcourse.classchoose.mapper.SelectedCourseMapper;
+import com.dbcourse.classchoose.service.SelectedCourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
@@ -26,10 +30,19 @@ public class SelectedCourseController {
     @Autowired
     SelectedCourseMapper selectedCourseMapper;
 
+    @Autowired
+    SelectedCourseService selectedCourseService;
+
     @GetMapping("/getAll")
     public List<TeacherCourseDTO> getAll(){
         System.out.println(selectedCourseMapper.findTeacherCourseRecord().get(0));
         return selectedCourseMapper.findTeacherCourseRecord();
     }
+
+    @GetMapping("/findMyClass/{sno}")
+    public List<GradeDTO> findMyClass(@PathVariable("sno") String sno){ return selectedCourseMapper.selectBySno(sno);}
+
+    @GetMapping("/delete/{id}")
+    public boolean delete(@PathVariable("id") int id){ return selectedCourseService.deleteById(id)>0;}
 }
 

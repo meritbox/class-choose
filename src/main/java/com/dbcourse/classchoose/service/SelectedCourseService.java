@@ -12,5 +12,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2022-05-11
  */
 public interface SelectedCourseService extends IService<SelectedCourse> {
+    int deleteById(Integer id);
 
 }
