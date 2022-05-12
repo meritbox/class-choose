@@ -18,4 +18,6 @@ import java.util.List;
 @Repository
 public interface GradeMapper extends BaseMapper<Grade> {
     List<GradeDTO> getAll();
+    List<Grade> selectAllBySno(String sno);
+
 }

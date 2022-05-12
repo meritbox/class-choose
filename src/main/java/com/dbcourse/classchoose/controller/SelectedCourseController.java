@@ -44,5 +44,8 @@ public class SelectedCourseController {
 
     @GetMapping("/delete/{id}")
     public boolean delete(@PathVariable("id") int id){ return selectedCourseService.deleteById(id)>0;}
+
+    @GetMapping("/chooseClass/{sno}/{pno}")
+    public int chooseClass(@PathVariable("sno") String sno,@PathVariable("pno") String pno){ return selectedCourseService.chooseClass(sno,pno);}
 }
 

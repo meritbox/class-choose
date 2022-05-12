@@ -13,5 +13,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface SelectedCourseService extends IService<SelectedCourse> {
     int deleteById(Integer id);
+    //        退课并且所退课程人数-1
+
+    int chooseClass(String sno,String pno);
+
 
 }

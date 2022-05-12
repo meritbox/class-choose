@@ -35,4 +35,9 @@
         left join teacher on selected_course.tno = teacher.tno
         where selected_course.sno=#{sno}
     </select>
+
+    <insert id="insertCourse">
+        insert into selected_course(sno,cno,term,tno)
+        values (#{sno},#{cno},#{term},#{tno})
+    </insert>
 </mapper>

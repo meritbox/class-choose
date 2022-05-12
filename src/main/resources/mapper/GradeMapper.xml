@@ -7,4 +7,11 @@
                 left join teacher on grade.tno = teacher.tno
                  left join clazz on grade.cno = clazz.cno
     </select>
+
+    <select id="selectAllBySno" resultType="com.dbcourse.classchoose.entity.Grade">
+        select grade.id id,grade.sno sno,grade.cno cno,grade.term term,grade.tno tno,grade.usual_grade usualGrade,grade.final_grade finalGrade,grade.total_grade totalGrade
+        from grade
+        where sno=#{sno}
+    </select>
+
 </mapper>

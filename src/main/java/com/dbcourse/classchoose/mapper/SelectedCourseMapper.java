@@ -21,4 +21,5 @@ public interface SelectedCourseMapper extends BaseMapper<SelectedCourse> {
 
     List<TeacherCourseDTO> findTeacherCourseRecord();
     List<GradeDTO> selectBySno(String Sno);
+    int insertCourse(String sno,String cno,String term,String tno);
 }
