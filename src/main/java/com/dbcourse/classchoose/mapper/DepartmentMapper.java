@@ -14,5 +14,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface DepartmentMapper extends BaseMapper<Department> {
+    int add(Department department);
 
 }

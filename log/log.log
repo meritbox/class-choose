@@ -242,3 +242,39 @@ java.sql.SQLIntegrityConstraintViolationException: Column 'sno' cannot be null
 2022-05-12 01:38:30.918  INFO 31532 --- [http-nio-9090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
 2022-05-12 01:38:30.953  INFO 31532 --- [http-nio-9090-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
 2022-05-12 01:38:31.154  INFO 31532 --- [http-nio-9090-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-05-12 13:05:11.918  INFO 21284 --- [restartedMain] c.d.classchoose.ClassChooseApplication   : Starting ClassChooseApplication using Java 16.0.1 on DESKTOP-D7I2EQ4 with PID 21284 (F:\database\db2\classchoose\class-choose\target\classes started by 70207 in F:\database\db2\classchoose\class-choose)
+2022-05-12 13:05:11.919 DEBUG 21284 --- [restartedMain] c.d.classchoose.ClassChooseApplication   : Running with Spring Boot v2.6.7, Spring v5.3.19
+2022-05-12 13:05:11.919  INFO 21284 --- [restartedMain] c.d.classchoose.ClassChooseApplication   : No active profile set, falling back to 1 default profile: "default"
+2022-05-12 13:05:11.956  INFO 21284 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-05-12 13:05:11.956  INFO 21284 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-05-12 13:05:12.682  INFO 21284 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2022-05-12 13:05:12.687  INFO 21284 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-05-12 13:05:12.688  INFO 21284 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.62]
+2022-05-12 13:05:12.728  INFO 21284 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-05-12 13:05:12.729  INFO 21284 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 772 ms
+2022-05-12 13:05:13.371  INFO 21284 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-05-12 13:05:13.396  INFO 21284 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2022-05-12 13:05:13.404  INFO 21284 --- [restartedMain] c.d.classchoose.ClassChooseApplication   : Started ClassChooseApplication in 1.77 seconds (JVM running for 2.314)
+2022-05-12 13:09:10.639  INFO 21284 --- [http-nio-9090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-05-12 13:09:10.639  INFO 21284 --- [http-nio-9090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-05-12 13:09:10.640  INFO 21284 --- [http-nio-9090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-05-12 13:09:10.667  INFO 21284 --- [http-nio-9090-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-05-12 13:09:10.853  INFO 21284 --- [http-nio-9090-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-05-12 13:19:39.865  INFO 24484 --- [restartedMain] c.d.classchoose.ClassChooseApplication   : Starting ClassChooseApplication using Java 16.0.1 on DESKTOP-D7I2EQ4 with PID 24484 (F:\database\db2\classchoose\class-choose\target\classes started by 70207 in F:\database\db2\classchoose\class-choose)
+2022-05-12 13:19:39.865 DEBUG 24484 --- [restartedMain] c.d.classchoose.ClassChooseApplication   : Running with Spring Boot v2.6.7, Spring v5.3.19
+2022-05-12 13:19:39.866  INFO 24484 --- [restartedMain] c.d.classchoose.ClassChooseApplication   : No active profile set, falling back to 1 default profile: "default"
+2022-05-12 13:19:39.909  INFO 24484 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-05-12 13:19:39.909  INFO 24484 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-05-12 13:19:40.746  INFO 24484 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2022-05-12 13:19:40.752  INFO 24484 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-05-12 13:19:40.753  INFO 24484 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.62]
+2022-05-12 13:19:40.799  INFO 24484 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-05-12 13:19:40.800  INFO 24484 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 890 ms
+2022-05-12 13:19:41.572  INFO 24484 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-05-12 13:19:41.602  INFO 24484 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2022-05-12 13:19:41.610  INFO 24484 --- [restartedMain] c.d.classchoose.ClassChooseApplication   : Started ClassChooseApplication in 2.04 seconds (JVM running for 2.565)
+2022-05-12 13:19:54.459  INFO 24484 --- [http-nio-9090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-05-12 13:19:54.459  INFO 24484 --- [http-nio-9090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-05-12 13:19:54.460  INFO 24484 --- [http-nio-9090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-05-12 13:19:54.531  INFO 24484 --- [http-nio-9090-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-05-12 13:19:54.732  INFO 24484 --- [http-nio-9090-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
