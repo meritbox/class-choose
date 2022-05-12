@@ -35,7 +35,6 @@ public class SelectedCourseController {
 
     @GetMapping("/getAll")
     public List<TeacherCourseDTO> getAll(){
-        System.out.println(selectedCourseMapper.findTeacherCourseRecord().get(0));
         return selectedCourseMapper.findTeacherCourseRecord();
     }
 

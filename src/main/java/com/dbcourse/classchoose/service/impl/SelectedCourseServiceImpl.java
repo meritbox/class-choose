@@ -50,17 +50,25 @@ public class SelectedCourseServiceImpl extends ServiceImpl<SelectedCourseMapper,
         List<GradeDTO> gradeDTOS = selectedCourseMapper.selectBySno(sno);
 
         Plan plan = planMapper.selectById(pno);
+
         //判断时间是否冲突
         String time = plan.getTime();
         String time2[] = time.split(" ");
         int newclassbegin = Integer.parseInt(time2[1].split("-")[0]);
         int newclassend = Integer.parseInt(time2[1].split("-")[1]);
-        for (int i = 0;i<gradeDTOS.size();i++){
-            String timetemp[] = planMapper.selectByCnoTnoTerm(gradeDTOS.get(i).getCno(),gradeDTOS.get(i).getTno(),gradeDTOS.get(i).getTerm()).getTime().split(" ");
+        for (int i = 0;i < gradeDTOS.size();i++){
+
+            String timetemp[] = planMapper.selectByCnoTnoTerm(gradeDTOS.get(i).getCno(),
+                                                              gradeDTOS.get(i).getTno(),
+                                                              gradeDTOS.get(i).getTerm())
+                                                              .getTime()
+                                                              .split(" ");
+
             if(timetemp[0].equals(time2[0])) {//周几冲突
                 int classbegin = Integer.parseInt(timetemp[1].split("-")[0]);
                 int classend = Integer.parseInt(timetemp[1].split("-")[1]);
-                if ((newclassbegin<=classend&&newclassbegin>=classbegin)||(newclassend>=classbegin&&newclassbegin<=classbegin)){
+                if ((newclassbegin <= classend && newclassbegin >= classbegin)
+                        ||( newclassend >= classbegin && newclassbegin <= classbegin)){
                     return -1;//时间冲突
                 }
             }
@@ -73,6 +81,10 @@ public class SelectedCourseServiceImpl extends ServiceImpl<SelectedCourseMapper,
                 return -2;//已修过该课
             }
         }
+
+        //TODO:选课已满判断未加
+
+
         selectedCourseMapper.insertCourse(sno,plan.getCno(),plan.getTerm(),plan.getTno());
         plan.setCurNum(plan.getCurNum()+1);
         planMapper.updateById(plan);

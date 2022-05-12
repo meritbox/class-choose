@@ -1,8 +1,11 @@
 package com.dbcourse.classchoose.mapper;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dbcourse.classchoose.entity.Clazz;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.dbcourse.classchoose.entity.DTO.ClazzDTO;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -17,6 +20,11 @@ import java.util.List;
  */
 @Repository
 public interface ClazzMapper extends BaseMapper<Clazz> {
-    List<ClazzDTO> getAll();
+
+    IPage<ClazzDTO> getAll(Page<ClazzDTO> page);
+
     int insertClazz(Clazz clazz);
+
+    @Select("select count(*) from clazz")
+    int getTotal();
 }

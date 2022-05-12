@@ -1,6 +1,8 @@
 package com.dbcourse.classchoose.controller;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dbcourse.classchoose.entity.Clazz;
 import com.dbcourse.classchoose.entity.DTO.ClazzDTO;
 import com.dbcourse.classchoose.mapper.ClazzMapper;
@@ -30,9 +32,14 @@ public class ClazzController {
     ClazzMapper clazzMapper;
 
 
-    @GetMapping("/getAll")
-    public List<ClazzDTO> getAll(){
-        return clazzService.getAll();
+    @GetMapping("/getPage/{pageIndex}/{pageSize}")
+    public List<ClazzDTO> getAll(@PathVariable("pageIndex") int pageIndex, @PathVariable("pageSize") int pageSize){
+        return clazzService.getAll(new Page<>(pageIndex,pageSize)).getRecords();
+    }
+
+    @GetMapping("/getTotal")
+    public int getTotal(){
+        return clazzMapper.getTotal();
     }
 
     @PostMapping("/updateClazz")

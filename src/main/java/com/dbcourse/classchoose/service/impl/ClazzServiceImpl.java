@@ -1,5 +1,7 @@
 package com.dbcourse.classchoose.service.impl;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dbcourse.classchoose.entity.Clazz;
 import com.dbcourse.classchoose.entity.DTO.ClazzDTO;
 import com.dbcourse.classchoose.mapper.ClazzMapper;
@@ -24,8 +26,8 @@ public class ClazzServiceImpl extends ServiceImpl<ClazzMapper, Clazz> implements
     ClazzMapper clazzMapper;
 
     @Override
-    public List<ClazzDTO> getAll() {
-        return clazzMapper.getAll();
+    public IPage<ClazzDTO> getAll(Page<ClazzDTO> page) {
+        return clazzMapper.getAll(page);
     }
 
 
