@@ -1,12 +1,14 @@
 package com.dbcourse.classchoose.controller;
 
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dbcourse.classchoose.entity.DTO.GradeDTO;
 import com.dbcourse.classchoose.entity.Grade;
 import com.dbcourse.classchoose.mapper.GradeMapper;
 import com.dbcourse.classchoose.service.GradeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
@@ -31,9 +33,12 @@ public class GradeController {
     @Autowired
     GradeMapper gradeMapper;
 
-    @GetMapping("/getAll")
-    public List<GradeDTO> getAll(){
-        return gradeMapper.getAll();
+    @GetMapping("/getPage/{pageIndex}/{pageSize}")
+    public List<GradeDTO> getAll(@PathVariable("pageIndex") int pageIndex, @PathVariable("pageSize") int pageSize){
+        return gradeMapper.getAll(new Page<>(pageIndex,pageSize)).getRecords();
     }
+
+    @GetMapping("/getTotal")
+    public int getTotal(){return gradeMapper.getTotal();}
 }
 

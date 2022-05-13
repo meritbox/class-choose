@@ -1,6 +1,7 @@
 package com.dbcourse.classchoose.controller;
 
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dbcourse.classchoose.entity.Department;
 import com.dbcourse.classchoose.mapper.DepartmentMapper;
 import com.dbcourse.classchoose.service.DepartmentService;
@@ -29,10 +30,13 @@ public class DepartmentController {
     @Autowired
     DepartmentMapper departmentMapper;
 
-    @GetMapping("/getAll")
-    public List<Department> getAll(){
-        return departmentService.list();
+    @GetMapping("/getPage/{pageIndex}/{pageSize}")
+    public List<Department> getAll(@PathVariable("pageIndex") int pageIndex, @PathVariable("pageSize") int pageSize){
+        return departmentMapper.getAll(new Page<>(pageIndex,pageSize)).getRecords();
     }
+
+    @GetMapping("/getTotal")
+    public int getTotal(){ return departmentMapper.getTotal();}
 
     @PostMapping("/add")
     public boolean add(@RequestBody Department department){return departmentMapper.add(department)>0;}

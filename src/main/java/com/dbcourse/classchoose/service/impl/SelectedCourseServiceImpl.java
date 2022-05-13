@@ -82,8 +82,8 @@ public class SelectedCourseServiceImpl extends ServiceImpl<SelectedCourseMapper,
             }
         }
 
-        //TODO:选课已满判断未加
-
+        //选课已满判断
+        if(plan.getCurNum() >= plan.getCapacity()){ return -3; }
 
         selectedCourseMapper.insertCourse(sno,plan.getCno(),plan.getTerm(),plan.getTno());
         plan.setCurNum(plan.getCurNum()+1);

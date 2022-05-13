@@ -1,6 +1,7 @@
 package com.dbcourse.classchoose.controller;
 
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dbcourse.classchoose.entity.DTO.GradeDTO;
 import com.dbcourse.classchoose.entity.DTO.TeacherCourseDTO;
 import com.dbcourse.classchoose.entity.SelectedCourse;
@@ -33,10 +34,13 @@ public class SelectedCourseController {
     @Autowired
     SelectedCourseService selectedCourseService;
 
-    @GetMapping("/getAll")
-    public List<TeacherCourseDTO> getAll(){
-        return selectedCourseMapper.findTeacherCourseRecord();
+    @GetMapping("/getPage/{pageIndex}/{pageSize}")
+    public List<TeacherCourseDTO> getAll(@PathVariable("pageIndex") int pageIndex, @PathVariable("pageSize") int pageSize){
+        return selectedCourseMapper.findTeacherCourseRecord(new Page<>(pageIndex,pageSize)).getRecords();
     }
+
+    @GetMapping("/getTotal")
+    public int getTotal(){return selectedCourseMapper.getTotal();}
 
     @GetMapping("/findMyClass/{sno}")
     public List<GradeDTO> findMyClass(@PathVariable("sno") String sno){ return selectedCourseMapper.selectBySno(sno);}

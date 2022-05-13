@@ -1,6 +1,7 @@
 package com.dbcourse.classchoose.controller;
 
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dbcourse.classchoose.entity.DTO.PlanBody;
 import com.dbcourse.classchoose.entity.DTO.PlanDTO;
 import com.dbcourse.classchoose.entity.Plan;
@@ -30,10 +31,13 @@ public class PlanController {
     @Autowired
     PlanMapper planMapper;
 
-    @GetMapping("/getAll")
-    public List<PlanDTO> getAll(){
-        return planMapper.getAll();
+    @GetMapping("/getPage/{pageIndex}/{pageSize}")
+    public List<PlanDTO> getAll(@PathVariable("pageIndex") int pageIndex, @PathVariable("pageSize") int pageSize){
+        return planMapper.getAll(new Page<>(pageIndex,pageSize)).getRecords();
     }
+
+    @GetMapping("/getTotal")
+    public int getTotal(){ return planMapper.getTotal();}
 
     @PostMapping("/addPlan")
     public boolean addPlan(@RequestBody PlanBody planBody){
@@ -44,5 +48,12 @@ public class PlanController {
     public boolean deletePlan(@PathVariable("pno") String pno){
         return planMapper.deleteById(pno)>0? true:false;
     }
+
+    @GetMapping("/updateCapacity/{pno}/{capacity}")
+    public boolean updateCapacity(@PathVariable("pno") String pno,@PathVariable("capacity") Integer capacity){
+        return planService.updateCapacity(pno, capacity)>0;
+    }
+
+
 }
 

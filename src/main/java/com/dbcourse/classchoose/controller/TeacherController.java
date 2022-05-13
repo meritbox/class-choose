@@ -1,6 +1,7 @@
 package com.dbcourse.classchoose.controller;
 
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dbcourse.classchoose.entity.DTO.LoginBody;
 import com.dbcourse.classchoose.entity.DTO.TeacherDTO;
 import com.dbcourse.classchoose.entity.Teacher;
@@ -34,11 +35,13 @@ public class TeacherController {
         return teacherService.login(loginBody);
     }
 
-    @GetMapping("/getAll")
-    public List<TeacherDTO> getAll(){
-        return teacherMapper.getAll();
+    @GetMapping("/getPage/{pageIndex}/{pageSize}")
+    public List<TeacherDTO> getAll(@PathVariable("pageIndex") int pageIndex, @PathVariable("pageSize") int pageSize){
+        return teacherMapper.getAll(new Page<>(pageIndex,pageSize)).getRecords();
     }
 
+    @GetMapping("/getTotal")
+    public int getTotal(){ return teacherMapper.getTotal();}
     @PostMapping("/add")
     public boolean add(@RequestBody Teacher teacher){ return teacherMapper.add(teacher)>0;}
 

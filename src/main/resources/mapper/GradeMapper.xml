@@ -2,7 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dbcourse.classchoose.mapper.GradeMapper">
     <select id="getAll" resultType="com.dbcourse.classchoose.entity.DTO.GradeDTO">
-        select grade.id id,grade.sno sno,student.sname sname,grade.cno cno,clazz.cname cname,grade.term term,grade.tno tno,teacher.tname tname,grade.usual_grade usualGrade,grade.final_grade finalGrade,grade.total_grade totalGrade
+        select grade.id id,grade.sno sno,student.sname sname,grade.cno cno,clazz.cname cname,grade.term term,grade.tno tno,
+               teacher.tname tname,grade.usual_grade usualGrade,grade.final_grade finalGrade,grade.total_grade totalGrade,clazz.credit credit
             from (grade left join student on grade.sno = student.sno)
                 left join teacher on grade.tno = teacher.tno
                  left join clazz on grade.cno = clazz.cno

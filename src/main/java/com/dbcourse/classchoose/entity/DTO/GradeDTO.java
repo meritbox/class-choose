@@ -26,4 +26,6 @@ public class GradeDTO {
 
     private Integer totalGrade;
 
+    //新增
+    private Integer credit;
 }

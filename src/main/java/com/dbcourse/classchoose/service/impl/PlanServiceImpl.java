@@ -47,4 +47,12 @@ public class PlanServiceImpl extends ServiceImpl<PlanMapper, Plan> implements Pl
         plan.setCurNum(0);
         return planMapper.insertPlan(plan);
     }
+
+    @Override
+    public int updateCapacity(String pno, Integer capacity) {
+        Plan plan = new Plan();
+        plan = planMapper.selectById(pno);
+        plan.setCapacity(capacity);
+        return planMapper.updateById(plan);
+    }
 }

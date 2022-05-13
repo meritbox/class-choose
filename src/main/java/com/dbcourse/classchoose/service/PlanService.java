@@ -18,4 +18,5 @@ public interface PlanService extends IService<Plan> {
 
     List<Plan> getAll();
     int addPlan(PlanBody planBody);
+    int updateCapacity(String pno,Integer capacity);
 }

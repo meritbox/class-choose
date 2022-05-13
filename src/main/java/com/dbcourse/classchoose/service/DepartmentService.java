@@ -1,5 +1,7 @@
 package com.dbcourse.classchoose.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dbcourse.classchoose.entity.Department;
 import com.baomidou.mybatisplus.extension.service.IService;
 

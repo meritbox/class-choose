@@ -1,9 +1,12 @@
 package com.dbcourse.classchoose.mapper;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dbcourse.classchoose.entity.DTO.GradeDTO;
 import com.dbcourse.classchoose.entity.DTO.TeacherCourseDTO;
 import com.dbcourse.classchoose.entity.SelectedCourse;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -19,7 +22,9 @@ import java.util.List;
 @Repository
 public interface SelectedCourseMapper extends BaseMapper<SelectedCourse> {
 
-    List<TeacherCourseDTO> findTeacherCourseRecord();
+    IPage<TeacherCourseDTO> findTeacherCourseRecord(Page<TeacherCourseDTO> page);
     List<GradeDTO> selectBySno(String Sno);
     int insertCourse(String sno,String cno,String term,String tno);
+    @Select("select count(*) from selected_course")
+    int getTotal();
 }
