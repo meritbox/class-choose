@@ -40,8 +40,8 @@ public class PlanController {
     public int getTotal(){ return planMapper.getTotal();}
 
     @PostMapping("/addPlan")
-    public boolean addPlan(@RequestBody PlanBody planBody){
-        return planService.addPlan(planBody)>0? true:false;
+    public int addPlan(@RequestBody PlanBody planBody){
+        return planService.addPlan(planBody);
     }
 
     @GetMapping("/deletePlan/{pno}")

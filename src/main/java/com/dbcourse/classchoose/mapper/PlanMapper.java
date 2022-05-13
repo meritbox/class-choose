@@ -25,4 +25,6 @@ public interface PlanMapper extends BaseMapper<Plan> {
     Plan selectByCnoTnoTerm(String cno,String tno,String term);
     @Select("select count(*) from plan")
     int getTotal();
+
+    List<Plan> selectAllByTerm(String term);
 }

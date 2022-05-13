@@ -19,4 +19,11 @@
         values
         (#{pno},#{cno},#{cname},#{tno},#{time},#{term},#{location},#{credit},#{dno},#{capacity},#{curNum})
     </insert>
+
+    <select id="selectAllByTerm" resultType="com.dbcourse.classchoose.entity.Plan">
+        select pno,cno,cname,tno,time,term,location,credit,dno,capacity,cur_num curNum
+        from plan
+        where term=#{term}
+    </select>
+
 </mapper>
