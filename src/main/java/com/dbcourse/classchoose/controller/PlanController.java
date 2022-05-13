@@ -54,6 +54,10 @@ public class PlanController {
         return planService.updateCapacity(pno, capacity)>0;
     }
 
+    @GetMapping("/getByTerm/{term}")
+    public List<PlanDTO> getByTerm(@PathVariable("term") String term){
+        return planMapper.getAllByTerm(term);
+    }
 
 }
 

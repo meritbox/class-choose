@@ -27,4 +27,5 @@ public interface PlanMapper extends BaseMapper<Plan> {
     int getTotal();
 
     List<Plan> selectAllByTerm(String term);
+    List<PlanDTO> getAllByTerm(String term);
 }
