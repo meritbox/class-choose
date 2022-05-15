@@ -15,4 +15,23 @@
         where sno=#{sno}
     </select>
 
+    <select id="getByTnoTermCno" resultType="com.dbcourse.classchoose.entity.DTO.GradeDTO">
+        select grade.id, grade.sno, s.sname,grade.cno,
+               c.cname,grade.term,grade.tno,t.tname,
+               grade.usual_grade usualGrade,grade.final_grade finalGrade,
+               grade.total_grade totalGrade,c.credit
+        from grade left join clazz c on grade.cno = c.cno
+                   left join teacher t on t.tno = grade.tno
+                   left join student s on grade.sno = s.sno
+        where grade.term = #{term} and grade.tno = #{tno} and grade.cno = #{cno}
+    </select>
+
+    <select id="getClazzTeacher" resultType="com.dbcourse.classchoose.entity.DTO.ClazzTeacherDTO">
+        select distinct g.tno,g.cno,c.cname,c.credit,c.dno,d.dname
+
+        from grade g left join clazz c on g.cno = c.cno left join department d on c.dno = d.dno
+
+        where g.tno = #{tno} and g.term = #{term}
+    </select>
+
 </mapper>

@@ -2,6 +2,7 @@ package com.dbcourse.classchoose.mapper;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.dbcourse.classchoose.entity.DTO.ClazzTeacherDTO;
 import com.dbcourse.classchoose.entity.DTO.GradeDTO;
 import com.dbcourse.classchoose.entity.Grade;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
@@ -26,4 +27,10 @@ public interface GradeMapper extends BaseMapper<Grade> {
 
     @Select("select count(*) from grade")
     int getTotal();
+
+//    List<Grade> getByTnoTerm(Page<GradeDTO> page,String tno, String term);
+
+    List<GradeDTO> getByTnoTermCno(Page<GradeDTO> page,String tno,String term,String cno);
+
+    List<ClazzTeacherDTO> getClazzTeacher(String tno,String term);
 }

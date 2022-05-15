@@ -2,17 +2,15 @@ package com.dbcourse.classchoose.controller;
 
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.dbcourse.classchoose.entity.DTO.ClazzTeacherDTO;
 import com.dbcourse.classchoose.entity.DTO.GradeDTO;
 import com.dbcourse.classchoose.entity.Grade;
 import com.dbcourse.classchoose.mapper.GradeMapper;
 import com.dbcourse.classchoose.service.GradeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -40,5 +38,20 @@ public class GradeController {
 
     @GetMapping("/getTotal")
     public int getTotal(){return gradeMapper.getTotal();}
+
+    @GetMapping("/getByTnoTermCno")
+    public List<GradeDTO> getByTnoTermCno(@RequestParam int pageIndex,
+                                          @RequestParam int pageSize,
+                                          @RequestParam String tno,
+                                          @RequestParam String term,
+                                          @RequestParam String cno){
+        return gradeMapper.getByTnoTermCno(new Page<>(pageIndex,pageSize),tno,term,cno);
+    }
+
+    @GetMapping("/getByTnoTerm")
+    public List<ClazzTeacherDTO> getClazzByTnoTerm(@RequestParam String tno,
+                                                   @RequestParam String term){
+        return gradeMapper.getClazzTeacher(tno,term);
+    }
 }
 
