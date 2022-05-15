@@ -17,5 +17,5 @@ public interface SelectedCourseService extends IService<SelectedCourse> {
 
     int chooseClass(String sno,String pno);
 
-
+    String[][] handleTimetableRecordTime(String sno);
 }

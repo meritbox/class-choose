@@ -8,12 +8,9 @@ import com.dbcourse.classchoose.entity.SelectedCourse;
 import com.dbcourse.classchoose.mapper.SelectedCourseMapper;
 import com.dbcourse.classchoose.service.SelectedCourseService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -50,5 +47,11 @@ public class SelectedCourseController {
 
     @GetMapping("/chooseClass/{sno}/{pno}")
     public int chooseClass(@PathVariable("sno") String sno,@PathVariable("pno") String pno){ return selectedCourseService.chooseClass(sno,pno);}
+
+
+    @GetMapping("/timeTable")
+    public String[][] getTimeTableBySno(@RequestParam String sno){
+        return selectedCourseService.handleTimetableRecordTime(sno);
+    }
 }
 

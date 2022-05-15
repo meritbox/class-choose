@@ -1,6 +1,7 @@
 package com.dbcourse.classchoose.service.impl;
 
 import com.dbcourse.classchoose.entity.DTO.GradeDTO;
+import com.dbcourse.classchoose.entity.DTO.TimeTableRecord;
 import com.dbcourse.classchoose.entity.Grade;
 import com.dbcourse.classchoose.entity.Plan;
 import com.dbcourse.classchoose.entity.SelectedCourse;
@@ -12,8 +13,11 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Time;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -33,6 +37,17 @@ public class SelectedCourseServiceImpl extends ServiceImpl<SelectedCourseMapper,
 
     @Autowired
     GradeMapper gradeMapper;
+
+    private static final Map<String,Integer> weekdayChineseToInt = new HashMap<String,Integer>(){
+        {
+            put("周一",0);
+            put("周二",1);
+            put("周三",2);
+            put("周四",3);
+            put("周五",4);
+        }
+    };
+
 
     @Override
     public int deleteById(Integer id) {
@@ -90,4 +105,33 @@ public class SelectedCourseServiceImpl extends ServiceImpl<SelectedCourseMapper,
         planMapper.updateById(plan);
         return 1;
     }
+
+    @Override
+    public String[][] handleTimetableRecordTime(String sno) {
+        List<TimeTableRecord> records = selectedCourseMapper.getRecordBySno(sno);
+        String[][] timeTable = new String[5][12];
+        for(int i = 0 ; i < 5; i++) {
+            for(int j = 0 ; j < 12; j++){
+                timeTable[i][j] = "";
+            }
+        }
+
+        for(TimeTableRecord t: records){
+            String time = t.getTime();
+            String clazzPair = t.getCno() + "-" + t.getCname();
+            String[] s = time.split(" ");
+            Integer weekDay = weekdayChineseToInt.get(s[0]);
+            String[] dayTime = s[1].split("-");
+            Integer start = Integer.parseInt(dayTime[0]);
+            Integer end = Integer.parseInt(dayTime[1]);
+
+            for(int i = start - 1; i < end; i++){
+                timeTable[weekDay][i] = clazzPair;
+            }
+        }
+
+        return timeTable;
+    }
+
+
 }
