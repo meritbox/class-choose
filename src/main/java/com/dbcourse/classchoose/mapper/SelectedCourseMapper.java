@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dbcourse.classchoose.entity.DTO.GradeDTO;
 import com.dbcourse.classchoose.entity.DTO.TeacherCourseDTO;
+import com.dbcourse.classchoose.entity.DTO.TimeTableRecord;
 import com.dbcourse.classchoose.entity.SelectedCourse;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Select;
@@ -23,8 +24,16 @@ import java.util.List;
 public interface SelectedCourseMapper extends BaseMapper<SelectedCourse> {
 
     IPage<TeacherCourseDTO> findTeacherCourseRecord(Page<TeacherCourseDTO> page);
+
     List<GradeDTO> selectBySno(String Sno);
+
     int insertCourse(String sno,String cno,String term,String tno);
+
     @Select("select count(*) from selected_course")
     int getTotal();
+
+    @Select("select selected_course.cno cno, p.cname cname, p.time time " +
+            "from selected_course left join plan p on selected_course.cno = p.cno " +
+            "where selected_course.sno = #{sno}")
+    List<TimeTableRecord> getRecordBySno(String sno);
 }
