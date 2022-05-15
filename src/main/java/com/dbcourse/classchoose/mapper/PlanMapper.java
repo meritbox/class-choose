@@ -27,5 +27,9 @@ public interface PlanMapper extends BaseMapper<Plan> {
     int getTotal();
 
     List<Plan> selectAllByTerm(String term);
-    List<PlanDTO> getAllByTerm(String term);
+
+    IPage<PlanDTO> getAllByTerm(String term,Page<PlanDTO> page);
+
+    @Select("select count(*) from plan where plan.term=#{term}")
+    int getByTermTotal(String term);
 }
