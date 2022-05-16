@@ -7,6 +7,7 @@ import com.dbcourse.classchoose.service.TeacherService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.DigestUtils;
 
 /**
  * <p>
@@ -26,16 +27,18 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> impl
     public int login(LoginBody loginBody) {
         String username = loginBody.getUsername();
         String password = loginBody.getPassword();
+        String md5 = DigestUtils.md5DigestAsHex(password.getBytes());
         Teacher teacher = teacherMapper.selectById(username);
-        return (teacher.getPassword().equals(password))? 1 : 0;
+        return (teacher.getPassword().equals(md5))? 1 : 0;
     }
 
     @Override
     public int updatePwd(LoginBody loginBody) {
-        String username = loginBody.getUsername();;
+        String username = loginBody.getUsername();
         String password = loginBody.getPassword();
+        String md5 = DigestUtils.md5DigestAsHex(password.getBytes());
         Teacher teacher = teacherMapper.selectById(username);
-        teacher.setPassword(password);
+        teacher.setPassword(md5);
         return teacherMapper.updateById(teacher);
     }
 }

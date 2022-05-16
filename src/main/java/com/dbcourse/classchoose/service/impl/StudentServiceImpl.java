@@ -7,6 +7,9 @@ import com.dbcourse.classchoose.service.StudentService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.DigestUtils;
+
+import java.nio.charset.StandardCharsets;
 
 /**
  * <p>
@@ -27,8 +30,9 @@ public class StudentServiceImpl extends ServiceImpl<StudentMapper, Student> impl
     public int login(LoginBody loginBody) {
         String username = loginBody.getUsername();
         String password = loginBody.getPassword();
+        String md5 = DigestUtils.md5DigestAsHex(password.getBytes());
         Student student = studentMapper.selectById(username);
-        return (student.getPassword().equals(password))? 1 : 0;
+        return (student.getPassword().equals(md5))? 1 : 0;
     }
 
     @Override
@@ -40,8 +44,9 @@ public class StudentServiceImpl extends ServiceImpl<StudentMapper, Student> impl
     public int updatePwd(LoginBody loginBody) {
         String username = loginBody.getUsername();
         String password = loginBody.getPassword();
+        String md5 = DigestUtils.md5DigestAsHex(password.getBytes());
         Student student = studentMapper.selectById(username);
-        student.setPassword(password);
+        student.setPassword(md5);
         return studentMapper.updateById(student);
     }
 }
