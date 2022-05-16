@@ -48,6 +48,13 @@ public class GradeController {
         return gradeMapper.getByTnoTermCno(new Page<>(pageIndex,pageSize),tno,term,cno);
     }
 
+    @GetMapping("/getTotalClazzMember")
+    public int getTotalClazzMember(@RequestParam String tno,
+                                   @RequestParam String term,
+                                   @RequestParam String cno){
+        return gradeMapper.getTotalClazzMember(tno,term,cno);
+    }
+
     @GetMapping("/getByTnoTerm")
     public List<ClazzTeacherDTO> getClazzByTnoTerm(@RequestParam String tno,
                                                    @RequestParam String term){
