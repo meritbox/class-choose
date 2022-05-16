@@ -33,5 +33,15 @@
 
         where g.tno = #{tno} and g.term = #{term}
     </select>
+    <select id="getByTerm" resultType="com.dbcourse.classchoose.entity.DTO.GradeDTO">
+        select grade.id, grade.sno, s.sname,grade.cno,
+               c.cname,grade.term,grade.tno,t.tname,
+               grade.usual_grade usualGrade,grade.final_grade finalGrade,
+               grade.total_grade totalGrade,c.credit
+        from grade left join clazz c on grade.cno = c.cno
+                   left join teacher t on t.tno = grade.tno
+                   left join student s on grade.sno = s.sno
+        where grade.term = #{term}
+    </select>
 
 </mapper>

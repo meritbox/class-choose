@@ -37,4 +37,9 @@ public interface GradeMapper extends BaseMapper<Grade> {
     int getTotalClazzMember(String tno,String term,String cno);
 
     List<ClazzTeacherDTO> getClazzTeacher(String tno,String term);
+
+    IPage<GradeDTO> getByTerm(String term,Page<GradeDTO> page);
+
+    @Select("select count(*) from grade where grade.term = #{term}")
+    int getByTermTotal(String term);
 }

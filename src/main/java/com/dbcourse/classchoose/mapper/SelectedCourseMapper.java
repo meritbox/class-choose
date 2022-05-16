@@ -36,4 +36,9 @@ public interface SelectedCourseMapper extends BaseMapper<SelectedCourse> {
             "from selected_course left join plan p on selected_course.cno = p.cno " +
             "where selected_course.sno = #{sno}")
     List<TimeTableRecord> getRecordBySno(String sno);
+
+    IPage<GradeDTO> getByTnoTermCno(Page<GradeDTO> page, String tno, String term, String cno);
+
+    @Select("select count(*) from selected_course where tno = #{tno} and term = #{term} and cno = #{cno}")
+    int getTotalClazzMember(String tno,String term,String cno);
 }

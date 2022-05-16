@@ -1,6 +1,7 @@
 package com.dbcourse.classchoose.controller;
 
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dbcourse.classchoose.entity.DTO.GradeDTO;
 import com.dbcourse.classchoose.entity.DTO.TeacherCourseDTO;
@@ -52,6 +53,22 @@ public class SelectedCourseController {
     @GetMapping("/timeTable")
     public String[][] getTimeTableBySno(@RequestParam String sno){
         return selectedCourseService.handleTimetableRecordTime(sno);
+    }
+
+    @GetMapping("/getByTnoTermCno")
+    public List<GradeDTO> getByTnoTermCno(@RequestParam int pageIndex,
+                                           @RequestParam int pageSize,
+                                           @RequestParam String tno,
+                                           @RequestParam String term,
+                                           @RequestParam String cno){
+        return selectedCourseMapper.getByTnoTermCno(new Page<>(pageIndex,pageSize),tno,term,cno).getRecords();
+    }
+
+    @GetMapping("/getTotalClazzMember")
+    public int getTotalClazzMember(@RequestParam String tno,
+                                   @RequestParam String term,
+                                   @RequestParam String cno){
+        return selectedCourseMapper.getTotalClazzMember(tno,term,cno);
     }
 }
 
