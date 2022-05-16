@@ -29,4 +29,13 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> impl
         Teacher teacher = teacherMapper.selectById(username);
         return (teacher.getPassword().equals(password))? 1 : 0;
     }
+
+    @Override
+    public int updatePwd(LoginBody loginBody) {
+        String username = loginBody.getUsername();;
+        String password = loginBody.getPassword();
+        Teacher teacher = teacherMapper.selectById(username);
+        teacher.setPassword(password);
+        return teacherMapper.updateById(teacher);
+    }
 }

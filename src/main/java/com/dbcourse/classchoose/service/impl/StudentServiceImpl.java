@@ -35,4 +35,13 @@ public class StudentServiceImpl extends ServiceImpl<StudentMapper, Student> impl
     public Student findBysno(String sno) {
         return studentMapper.selectById(sno);
     }
+
+    @Override
+    public int updatePwd(LoginBody loginBody) {
+        String username = loginBody.getUsername();
+        String password = loginBody.getPassword();
+        Student student = studentMapper.selectById(username);
+        student.setPassword(password);
+        return studentMapper.updateById(student);
+    }
 }

@@ -14,5 +14,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface StudentService extends IService<Student> {
     int login(LoginBody loginBody);
+
     Student findBysno(String sno);
+
+    int updatePwd(LoginBody loginBody);
 }

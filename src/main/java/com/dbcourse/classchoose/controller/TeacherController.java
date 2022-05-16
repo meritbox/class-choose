@@ -51,5 +51,10 @@ public class TeacherController {
     @GetMapping("/delete/{tno}")
     public boolean delete(@PathVariable("tno") String tno){return teacherMapper.deleteById(tno)>0;}
 
+    @GetMapping("/getTname/{tno}")
+    public String getTname(@PathVariable("tno") String tno){return teacherMapper.getTname(tno);}
+
+    @PostMapping("/updatePwd")
+    public int updatePwd(@RequestBody LoginBody loginBody){ return teacherService.updatePwd(loginBody);}
 }
 

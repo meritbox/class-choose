@@ -21,7 +21,12 @@ import java.util.List;
 @Repository
 public interface TeacherMapper extends BaseMapper<Teacher> {
     IPage<TeacherDTO> getAll(Page<TeacherDTO> page);
+
     int add(Teacher teacher);
+
     @Select("select count(*) from teacher")
     int getTotal();
+
+    @Select("select tname from teacher where tno=#{tno}")
+    String getTname(String tno);
 }

@@ -15,5 +15,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface TeacherService extends IService<Teacher> {
     int login(LoginBody loginBody);
 
-
+    int updatePwd(LoginBody loginBody);
 }
