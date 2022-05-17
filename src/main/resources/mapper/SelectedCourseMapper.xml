@@ -28,7 +28,7 @@
             selected_course.tno tno,
             teacher.tname tname,
             selected_course.usual_grade usualGrade,
-            selected_course.final_grade firstGrade,
+            selected_course.final_grade finalGrade,
             selected_course.total_grade totalGrade,
             clazz.credit credit
         from selected_course left join student on selected_course.sno = student.sno
@@ -53,7 +53,7 @@
             selected_course.tno tno,
             teacher.tname tname,
             selected_course.usual_grade usualGrade,
-            selected_course.final_grade firstGrade,
+            selected_course.final_grade finalGrade,
             selected_course.total_grade totalGrade,
             clazz.credit credit
         from selected_course left join student on selected_course.sno = student.sno
