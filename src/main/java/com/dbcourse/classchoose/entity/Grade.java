@@ -37,5 +37,13 @@ import lombok.EqualsAndHashCode;
 
     private Integer totalGrade;
 
-
+  public Grade(SelectedCourse selectedCourse) {
+    this.sno = selectedCourse.getSno();
+    this.cno = selectedCourse.getCno();
+    this.term = selectedCourse.getTerm();
+    this.tno = selectedCourse.getTno();
+    this.usualGrade = selectedCourse.getUsualGrade();
+    this.finalGrade = selectedCourse.getFinalGrade();
+    this.totalGrade = selectedCourse.getTotalGrade();
+  }
 }

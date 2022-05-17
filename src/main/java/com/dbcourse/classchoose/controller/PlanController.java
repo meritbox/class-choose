@@ -62,5 +62,8 @@ public class PlanController {
     @GetMapping("/getByTermTotal/{term}")
     public int getByTermTotal(@PathVariable("term") String term){ return planMapper.getByTermTotal(term);}
 
+    @GetMapping("/getByTno/{tno}")
+    public List<PlanDTO> getByTno(@PathVariable("tno") String tno){return planMapper.getByTno(tno);}
+
 }
 

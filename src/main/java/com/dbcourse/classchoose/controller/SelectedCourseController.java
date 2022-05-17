@@ -70,5 +70,15 @@ public class SelectedCourseController {
                                    @RequestParam String cno){
         return selectedCourseMapper.getTotalClazzMember(tno,term,cno);
     }
+
+    @GetMapping("/updateGrade")
+    public boolean updateGrade(@RequestParam String sno,
+                               @RequestParam String cno,
+                               @RequestParam String tno,
+                               @RequestParam int rate,
+                               @RequestParam int usualGrade,
+                               @RequestParam int finalGrade){
+        return selectedCourseService.updateGrade(sno,cno,tno,rate,usualGrade,finalGrade)>0;
+    }
 }
 

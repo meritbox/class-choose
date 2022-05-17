@@ -31,5 +31,11 @@
             left join department on plan.dno=department.dno
         where plan.term=#{term}
     </select>
+    <select id="getByTno" resultType="com.dbcourse.classchoose.entity.DTO.PlanDTO">
+        select plan.pno pno,plan.cno cno,plan.cname cname,plan.tno tno,teacher.tname tname,plan.time time,plan.term term,plan.location location,plan.credit credit,plan.dno dno,department.dname department,plan.capacity capacity,plan.cur_num curNum
+        from (plan left join teacher on plan.tno = teacher.tno )
+            left join department on plan.dno=department.dno
+        where plan.tno=#{tno}
+    </select>
 
 </mapper>

@@ -61,5 +61,10 @@
                              left join teacher on selected_course.tno = teacher.tno
         where selected_course.tno=#{tno} and selected_course.term=#{term} and selected_course.cno=#{cno}
     </select>
+    <select id="getBySnoTnoCno" resultType="com.dbcourse.classchoose.entity.SelectedCourse">
+        select id,sno,cno,term,tno,usual_grade usualGrade,final_grade finalGrade,total_grade totalGrade
+        from selected_course
+        where sno = #{sno} and tno = #{tno} and cno=#{cno}
+    </select>
 
 </mapper>

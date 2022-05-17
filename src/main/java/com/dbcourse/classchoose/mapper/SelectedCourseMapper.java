@@ -41,4 +41,6 @@ public interface SelectedCourseMapper extends BaseMapper<SelectedCourse> {
 
     @Select("select count(*) from selected_course where tno = #{tno} and term = #{term} and cno = #{cno}")
     int getTotalClazzMember(String tno,String term,String cno);
+
+     SelectedCourse getBySnoTnoCno(String sno,String tno,String cno);
 }

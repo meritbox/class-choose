@@ -32,4 +32,6 @@ public interface PlanMapper extends BaseMapper<Plan> {
 
     @Select("select count(*) from plan where plan.term=#{term}")
     int getByTermTotal(String term);
+
+    List<PlanDTO> getByTno(String tno);
 }

@@ -133,5 +133,13 @@ public class SelectedCourseServiceImpl extends ServiceImpl<SelectedCourseMapper,
         return timeTable;
     }
 
-
+    @Override
+    public int updateGrade(String sno, String cno, String tno, int rate, int usualGrade, int finalGrade) {
+        SelectedCourse selectedCourse = selectedCourseMapper.getBySnoTnoCno(sno,tno, cno);
+        selectedCourse.setUsualGrade(usualGrade);
+        selectedCourse.setFinalGrade(finalGrade);
+        selectedCourse.setTotalGrade((int) (usualGrade*(1D-0.01*rate)+0.01*rate*finalGrade));
+        selectedCourseMapper.updateById(selectedCourse);
+        return gradeMapper.insert(new Grade(selectedCourse));
+    }
 }
