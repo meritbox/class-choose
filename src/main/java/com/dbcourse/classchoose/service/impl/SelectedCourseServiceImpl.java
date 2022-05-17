@@ -5,13 +5,16 @@ import com.dbcourse.classchoose.entity.DTO.TimeTableRecord;
 import com.dbcourse.classchoose.entity.Grade;
 import com.dbcourse.classchoose.entity.Plan;
 import com.dbcourse.classchoose.entity.SelectedCourse;
+import com.dbcourse.classchoose.entity.Student;
 import com.dbcourse.classchoose.mapper.GradeMapper;
 import com.dbcourse.classchoose.mapper.PlanMapper;
 import com.dbcourse.classchoose.mapper.SelectedCourseMapper;
+import com.dbcourse.classchoose.mapper.StudentMapper;
 import com.dbcourse.classchoose.service.SelectedCourseService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Time;
 import java.util.ArrayList;
@@ -37,6 +40,9 @@ public class SelectedCourseServiceImpl extends ServiceImpl<SelectedCourseMapper,
 
     @Autowired
     GradeMapper gradeMapper;
+
+    @Autowired
+    StudentMapper studentMapper;
 
     private static final Map<String,Integer> weekdayChineseToInt = new HashMap<String,Integer>(){
         {
@@ -133,6 +139,7 @@ public class SelectedCourseServiceImpl extends ServiceImpl<SelectedCourseMapper,
         return timeTable;
     }
 
+    @Transactional
     @Override
     public int updateGrade(String sno, String cno, String tno, int rate, int usualGrade, int finalGrade) {
         SelectedCourse selectedCourse = selectedCourseMapper.getBySnoTnoCno(sno,tno, cno);
@@ -140,6 +147,33 @@ public class SelectedCourseServiceImpl extends ServiceImpl<SelectedCourseMapper,
         selectedCourse.setFinalGrade(finalGrade);
         selectedCourse.setTotalGrade((int) (usualGrade*(1D-0.01*rate)+0.01*rate*finalGrade));
         selectedCourseMapper.updateById(selectedCourse);
-        return gradeMapper.insert(new Grade(selectedCourse));
+        gradeMapper.insert(new Grade(selectedCourse));
+        int totalcredit = gradeMapper.getSumBySno(sno);
+        double avgGPA = 0;
+        List<Grade> grades = gradeMapper.selectAllBySno(sno);
+        System.out.println(grades);
+        for(Grade grade:grades){
+            int totalGrade = grade.getTotalGrade();
+            if(totalGrade>=90){ avgGPA += 4.0/totalcredit; }
+            else if(totalGrade>=85){ avgGPA += 3.7/totalcredit; }
+            else if(totalGrade>=82){ avgGPA += 3.3/totalcredit; }
+            else if(totalGrade>=78){ avgGPA += 3.0/totalcredit; }
+            else if(totalGrade>=75){ avgGPA += 2.7/totalcredit; }
+            else if(totalGrade>=72){ avgGPA += 2.3/totalcredit; }
+            else if(totalGrade>=68){ avgGPA += 2.0/totalcredit; }
+            else if(totalGrade>=66){ avgGPA += 1.7/totalcredit; }
+            else if(totalGrade>=64){ avgGPA += 1.5/totalcredit; }
+            else if(totalGrade>=60){ avgGPA += 1.0/totalcredit; }
+            else{ avgGPA += 0/totalcredit; }
+        }
+        Student student = studentMapper.selectById(sno);
+        student.setGpa(avgGPA);
+        return studentMapper.updateById(student);
     }
+
+    @Override
+    public int getSumBySno(String sno) { return selectedCourseMapper.getSumBySno(sno); }
+
+    @Override
+    public int getNumBySno(String sno) {return selectedCourseMapper.getNumBySno(sno); }
 }

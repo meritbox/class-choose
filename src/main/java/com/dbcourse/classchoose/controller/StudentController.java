@@ -59,3 +59,4 @@ public class StudentController {
     public int updatePwd(@RequestBody LoginBody loginBody){return studentService.updatePwd(loginBody);}
 }
 
+

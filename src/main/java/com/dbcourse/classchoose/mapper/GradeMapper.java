@@ -45,4 +45,7 @@ public interface GradeMapper extends BaseMapper<Grade> {
     int getByTermTotal(String term);
 
     List<gradeAvg> getAvgGrade(String cno);
+
+    @Select("select sum(credit) from grade left join clazz on clazz.cno = grade.cno where sno = #{sno}")
+    int getSumBySno(String sno);
 }

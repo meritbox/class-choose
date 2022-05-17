@@ -80,5 +80,11 @@ public class SelectedCourseController {
                                @RequestParam int finalGrade){
         return selectedCourseService.updateGrade(sno,cno,tno,rate,usualGrade,finalGrade)>0;
     }
+
+    @GetMapping("/getSumBySno/{sno}")
+    public int getSumBySno(@PathVariable("sno") String sno){return selectedCourseService.getSumBySno(sno);}
+
+    @GetMapping("/getNumBySno/{sno}")
+    public int getNumBySno(@PathVariable("sno") String sno){return selectedCourseService.getNumBySno(sno);}
 }
 
