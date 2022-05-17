@@ -4,6 +4,7 @@ package com.dbcourse.classchoose.controller;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dbcourse.classchoose.entity.DTO.ClazzTeacherDTO;
 import com.dbcourse.classchoose.entity.DTO.GradeDTO;
+import com.dbcourse.classchoose.entity.DTO.gradeAvg;
 import com.dbcourse.classchoose.entity.Grade;
 import com.dbcourse.classchoose.mapper.GradeMapper;
 import com.dbcourse.classchoose.service.GradeService;
@@ -71,5 +72,8 @@ public class GradeController {
     public int getByTermTotal(@PathVariable("term") String term){
         return gradeMapper.getByTermTotal(term);
     }
+
+    @GetMapping("/getAvgGrade/{cno}")
+    public List<gradeAvg> getAvgGrade(@PathVariable("cno") String cno){ return gradeMapper.getAvgGrade(cno);}
 }
 

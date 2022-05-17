@@ -34,4 +34,6 @@ public interface PlanMapper extends BaseMapper<Plan> {
     int getByTermTotal(String term);
 
     List<PlanDTO> getByTno(String tno);
+
+    List<PlanDTO> getBySearch(String cnamelike);
 }

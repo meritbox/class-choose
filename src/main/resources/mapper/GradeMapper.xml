@@ -44,4 +44,13 @@
         where grade.term = #{term}
     </select>
 
+    <select id="getAvgGrade" resultType="com.dbcourse.classchoose.entity.DTO.gradeAvg">
+        select grade.cno,clazz.cname,grade.tno,teacher.tname,AVG(grade.total_grade) avgGrade
+        from grade left join clazz on grade.cno = clazz.cno
+                   left join teacher on teacher.tno = grade.tno
+        where grade.cno = #{cno}
+        group by cno,tno
+        ORDER BY AVG(grade.total_grade) asc
+    </select>
+
 </mapper>

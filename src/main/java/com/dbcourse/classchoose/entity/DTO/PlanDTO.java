@@ -20,7 +20,7 @@ public class PlanDTO {
 
     private String location;
 
-    private String credit;
+    private Integer credit;
 
     private String dno;
 

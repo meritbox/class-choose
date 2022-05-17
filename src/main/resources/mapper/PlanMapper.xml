@@ -38,4 +38,12 @@
         where plan.tno=#{tno}
     </select>
 
+    <select id="getBySearch" parameterType="java.lang.String" resultType="com.dbcourse.classchoose.entity.DTO.PlanDTO" statementType="CALLABLE">
+        {
+            call SEARCHPLAN(
+                #{cnamelike,mode=IN}
+            )
+        }
+    </select>
+
 </mapper>

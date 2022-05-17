@@ -65,5 +65,7 @@ public class PlanController {
     @GetMapping("/getByTno/{tno}")
     public List<PlanDTO> getByTno(@PathVariable("tno") String tno){return planMapper.getByTno(tno);}
 
+    @GetMapping("/getBySearch/{cnamelike}")
+    public List<PlanDTO> getBySearch(@PathVariable("cnamelike") String cnamelike){return planMapper.getBySearch(cnamelike);}
 }
 

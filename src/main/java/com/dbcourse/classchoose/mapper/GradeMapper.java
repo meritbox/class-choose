@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dbcourse.classchoose.entity.DTO.ClazzTeacherDTO;
 import com.dbcourse.classchoose.entity.DTO.GradeDTO;
+import com.dbcourse.classchoose.entity.DTO.gradeAvg;
 import com.dbcourse.classchoose.entity.Grade;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Select;
@@ -42,4 +43,6 @@ public interface GradeMapper extends BaseMapper<Grade> {
 
     @Select("select count(*) from grade where grade.term = #{term}")
     int getByTermTotal(String term);
+
+    List<gradeAvg> getAvgGrade(String cno);
 }
