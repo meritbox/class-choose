@@ -5,10 +5,19 @@
         select clazz.cno cno, clazz.cname cname, clazz.credit credit, clazz.dno dno, department.dname department
         from clazz left join department on clazz.dno = department.dno
     </select>
+
     <insert id="insertClazz" parameterType="com.dbcourse.classchoose.entity.Clazz">
         insert into clazz
         (cno,cname,credit,dno)
         values
         (#{cno},#{cname},#{credit},#{dno})
     </insert>
+
+    <select id="getBySearch" resultType="com.dbcourse.classchoose.entity.DTO.ClazzDTO">
+        {
+            call SEARCHCLAZZ(
+                #{cnamelike,mode=IN}
+            )
+        }
+    </select>
 </mapper>

@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dbcourse.classchoose.entity.Clazz;
 import com.dbcourse.classchoose.entity.DTO.ClazzDTO;
+import com.dbcourse.classchoose.entity.DTO.PlanDTO;
 import com.dbcourse.classchoose.mapper.ClazzMapper;
 import com.dbcourse.classchoose.service.ClazzService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,5 +60,8 @@ public class ClazzController {
         int i = clazzMapper.insertClazz(clazz);
         return (i > 0)? true: false;
     }
+
+    @GetMapping("/getBySearch/{cnamelike}")
+    public List<ClazzDTO> getBySearch(@PathVariable("cnamelike") String cnamelike){return clazzMapper.getBySearch(cnamelike);}
 }
 

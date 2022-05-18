@@ -30,4 +30,6 @@ public interface ClazzMapper extends BaseMapper<Clazz> {
 
     @Select("select credit from clazz where cno = #{cno}")
     int getCreditByCno(String cno);
+
+    List<ClazzDTO> getBySearch(String cnameLike);
 }
