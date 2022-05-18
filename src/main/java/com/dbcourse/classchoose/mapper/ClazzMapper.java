@@ -27,4 +27,7 @@ public interface ClazzMapper extends BaseMapper<Clazz> {
 
     @Select("select count(*) from clazz")
     int getTotal();
+
+    @Select("select credit from clazz where cno = #{cno}")
+    int getCreditByCno(String cno);
 }

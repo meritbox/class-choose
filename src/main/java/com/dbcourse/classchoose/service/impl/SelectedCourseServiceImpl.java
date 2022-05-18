@@ -6,10 +6,7 @@ import com.dbcourse.classchoose.entity.Grade;
 import com.dbcourse.classchoose.entity.Plan;
 import com.dbcourse.classchoose.entity.SelectedCourse;
 import com.dbcourse.classchoose.entity.Student;
-import com.dbcourse.classchoose.mapper.GradeMapper;
-import com.dbcourse.classchoose.mapper.PlanMapper;
-import com.dbcourse.classchoose.mapper.SelectedCourseMapper;
-import com.dbcourse.classchoose.mapper.StudentMapper;
+import com.dbcourse.classchoose.mapper.*;
 import com.dbcourse.classchoose.service.SelectedCourseService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +41,9 @@ public class SelectedCourseServiceImpl extends ServiceImpl<SelectedCourseMapper,
     @Autowired
     StudentMapper studentMapper;
 
+    @Autowired
+    ClazzMapper clazzMapper;
+
     private static final Map<String,Integer> weekdayChineseToInt = new HashMap<String,Integer>(){
         {
             put("周一",0);
@@ -54,7 +54,7 @@ public class SelectedCourseServiceImpl extends ServiceImpl<SelectedCourseMapper,
         }
     };
 
-
+    @Transactional
     @Override
     public int deleteById(Integer id) {
         SelectedCourse selectedCourse = selectedCourseMapper.selectById(id);
@@ -65,6 +65,7 @@ public class SelectedCourseServiceImpl extends ServiceImpl<SelectedCourseMapper,
         return planMapper.updateById(plan);
     }
 
+    @Transactional
     @Override
     public int chooseClass(String sno, String pno) {
         //获取该学期的课
@@ -112,6 +113,7 @@ public class SelectedCourseServiceImpl extends ServiceImpl<SelectedCourseMapper,
         return 1;
     }
 
+    @Transactional
     @Override
     public String[][] handleTimetableRecordTime(String sno) {
         List<TimeTableRecord> records = selectedCourseMapper.getRecordBySno(sno);
@@ -154,17 +156,18 @@ public class SelectedCourseServiceImpl extends ServiceImpl<SelectedCourseMapper,
         System.out.println(grades);
         for(Grade grade:grades){
             int totalGrade = grade.getTotalGrade();
-            if(totalGrade>=90){ avgGPA += 4.0/totalcredit; }
-            else if(totalGrade>=85){ avgGPA += 3.7/totalcredit; }
-            else if(totalGrade>=82){ avgGPA += 3.3/totalcredit; }
-            else if(totalGrade>=78){ avgGPA += 3.0/totalcredit; }
-            else if(totalGrade>=75){ avgGPA += 2.7/totalcredit; }
-            else if(totalGrade>=72){ avgGPA += 2.3/totalcredit; }
-            else if(totalGrade>=68){ avgGPA += 2.0/totalcredit; }
-            else if(totalGrade>=66){ avgGPA += 1.7/totalcredit; }
-            else if(totalGrade>=64){ avgGPA += 1.5/totalcredit; }
-            else if(totalGrade>=60){ avgGPA += 1.0/totalcredit; }
-            else{ avgGPA += 0/totalcredit; }
+            int credit = clazzMapper.getCreditByCno(grade.getCno());
+            if(totalGrade>=90){ avgGPA += 4.0 * credit / totalcredit; }
+            else if(totalGrade>=85){ avgGPA += 3.7 * credit / totalcredit; }
+            else if(totalGrade>=82){ avgGPA += 3.3 * credit / totalcredit; }
+            else if(totalGrade>=78){ avgGPA += 3.0 * credit / totalcredit; }
+            else if(totalGrade>=75){ avgGPA += 2.7 * credit / totalcredit; }
+            else if(totalGrade>=72){ avgGPA += 2.3 * credit / totalcredit; }
+            else if(totalGrade>=68){ avgGPA += 2.0 * credit / totalcredit; }
+            else if(totalGrade>=66){ avgGPA += 1.7 * credit / totalcredit; }
+            else if(totalGrade>=64){ avgGPA += 1.5 * credit / totalcredit; }
+            else if(totalGrade>=60){ avgGPA += 1.0 * credit / totalcredit; }
+            else{ avgGPA += 0 / totalcredit; }
         }
         Student student = studentMapper.selectById(sno);
         student.setGpa(avgGPA);

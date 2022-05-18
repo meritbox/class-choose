@@ -7,6 +7,7 @@ import com.dbcourse.classchoose.service.StudentService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 
 import java.nio.charset.StandardCharsets;
@@ -26,6 +27,7 @@ public class StudentServiceImpl extends ServiceImpl<StudentMapper, Student> impl
     @Autowired
     StudentMapper studentMapper;
 
+    @Transactional
     @Override
     public int login(LoginBody loginBody) {
         String username = loginBody.getUsername();
@@ -40,6 +42,7 @@ public class StudentServiceImpl extends ServiceImpl<StudentMapper, Student> impl
         return studentMapper.selectById(sno);
     }
 
+    @Transactional
     @Override
     public int updatePwd(LoginBody loginBody) {
         String username = loginBody.getUsername();

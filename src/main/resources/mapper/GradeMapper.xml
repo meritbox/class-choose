@@ -53,4 +53,14 @@
         ORDER BY AVG(grade.total_grade) asc
     </select>
 
+    <select id="getBySno" resultType="com.dbcourse.classchoose.entity.DTO.GradeDTO">
+        select grade.id id,grade.sno sno,student.sname sname,grade.cno cno,clazz.cname cname,grade.term term,grade.tno tno,
+               teacher.tname tname,grade.usual_grade usualGrade,grade.final_grade finalGrade,grade.total_grade totalGrade,clazz.credit credit
+        from (grade left join student on grade.sno = student.sno)
+                 left join teacher on grade.tno = teacher.tno
+                 left join clazz on grade.cno = clazz.cno
+        where grade.sno = #{sno}
+        order by grade.cno asc
+    </select>
+
 </mapper>

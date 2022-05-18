@@ -7,6 +7,7 @@ import com.dbcourse.classchoose.service.TeacherService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 
 /**
@@ -23,6 +24,7 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> impl
     @Autowired
     TeacherMapper teacherMapper;
 
+    @Transactional
     @Override
     public int login(LoginBody loginBody) {
         String username = loginBody.getUsername();
@@ -32,6 +34,7 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> impl
         return (teacher.getPassword().equals(md5))? 1 : 0;
     }
 
+    @Transactional
     @Override
     public int updatePwd(LoginBody loginBody) {
         String username = loginBody.getUsername();

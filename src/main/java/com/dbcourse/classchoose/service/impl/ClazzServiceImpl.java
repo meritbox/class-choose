@@ -9,6 +9,7 @@ import com.dbcourse.classchoose.service.ClazzService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -30,7 +31,9 @@ public class ClazzServiceImpl extends ServiceImpl<ClazzMapper, Clazz> implements
         return clazzMapper.getAll(page);
     }
 
-
-
-
+    @Transactional
+    @Override
+    public int deleteById(String cno) {
+        return clazzMapper.deleteById(cno);
+    }
 }

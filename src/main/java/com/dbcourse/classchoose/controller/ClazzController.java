@@ -44,13 +44,12 @@ public class ClazzController {
 
     @PostMapping("/updateClazz")
     public boolean updateClazz(@RequestBody Clazz clazz){
-        int i = clazzMapper.updateById(clazz);
-        return (i > 0)? true: false;
+        return clazzService.updateById(clazz);
     }
 
     @GetMapping("/delete/{cno}")
     public boolean delete(@PathVariable("cno") String cno){
-        int i = clazzMapper.deleteById(cno);
+        int i = clazzService.deleteById(cno);
         return (i > 0)? true: false;
     }
 

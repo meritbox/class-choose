@@ -2,6 +2,7 @@ package com.dbcourse.classchoose.controller;
 
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.dbcourse.classchoose.entity.DTO.GradeDTO;
 import com.dbcourse.classchoose.entity.DTO.LoginBody;
 import com.dbcourse.classchoose.entity.DTO.StudentDTO;
 import com.dbcourse.classchoose.entity.Student;
@@ -30,6 +31,7 @@ public class StudentController {
     @Autowired
     StudentMapper studentMapper;
 
+
     @PostMapping("/login")
     public int login(@RequestBody LoginBody loginBody){
         return studentService.login(loginBody);
@@ -57,6 +59,10 @@ public class StudentController {
 
     @PostMapping("/updatePwd")
     public int updatePwd(@RequestBody LoginBody loginBody){return studentService.updatePwd(loginBody);}
+
+    @GetMapping("/getGPABySno/{sno}")
+    public double getGPABySno(@PathVariable("sno") String sno){return studentMapper.selectById(sno).getGpa();}
+
 }
 
 

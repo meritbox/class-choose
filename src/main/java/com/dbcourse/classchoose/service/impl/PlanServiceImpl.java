@@ -9,6 +9,7 @@ import com.dbcourse.classchoose.service.PlanService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -35,6 +36,7 @@ public class PlanServiceImpl extends ServiceImpl<PlanMapper, Plan> implements Pl
         return null;
     }
 
+    @Transactional
     @Override
     public int addPlan(PlanBody planBody) {
         Plan plan = new Plan();
@@ -71,6 +73,7 @@ public class PlanServiceImpl extends ServiceImpl<PlanMapper, Plan> implements Pl
         return planMapper.insertPlan(plan);
     }
 
+    @Transactional
     @Override
     public int updateCapacity(String pno, Integer capacity) {
         Plan plan = new Plan();

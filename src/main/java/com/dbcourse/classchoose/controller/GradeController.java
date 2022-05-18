@@ -75,5 +75,15 @@ public class GradeController {
 
     @GetMapping("/getAvgGrade/{cno}")
     public List<gradeAvg> getAvgGrade(@PathVariable("cno") String cno){ return gradeMapper.getAvgGrade(cno);}
+
+
+    @GetMapping("/getGradeBySno/{sno}/{pageIndex}/{pageSize}")
+    public List<GradeDTO> getGradeBySno(@PathVariable("sno") String sno,@PathVariable("pageIndex") int pageIndex,
+                                        @PathVariable("pageSize") int pageSize) {
+        return gradeMapper.getBySno(sno,new Page<>(pageIndex,pageSize)).getRecords();
+    }
+
+    @GetMapping("/getGradeBySnoTotal/{sno}")
+    public int getGradeBySnoTotal(@PathVariable("sno") String sno){return gradeMapper.getGradeBySnoTotal(sno);}
 }
 

@@ -18,4 +18,6 @@ import java.util.List;
  */
 public interface ClazzService extends IService<Clazz> {
     IPage<ClazzDTO> getAll(Page<ClazzDTO> page);
+
+    int deleteById(String cno);
 }

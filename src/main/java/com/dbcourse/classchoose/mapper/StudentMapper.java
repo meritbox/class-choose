@@ -29,4 +29,5 @@ public interface StudentMapper extends BaseMapper<Student> {
 
     @Select("select sname from student where sno = #{sno}")
     String getSname(String sno);
+
 }

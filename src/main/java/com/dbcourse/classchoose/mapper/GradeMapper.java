@@ -48,4 +48,9 @@ public interface GradeMapper extends BaseMapper<Grade> {
 
     @Select("select sum(credit) from grade left join clazz on clazz.cno = grade.cno where sno = #{sno}")
     int getSumBySno(String sno);
+
+    IPage<GradeDTO> getBySno(String sno, Page<GradeDTO> page);
+
+    @Select("select count(*) from grade where sno = #{sno}")
+    int getGradeBySnoTotal(String sno);
 }
